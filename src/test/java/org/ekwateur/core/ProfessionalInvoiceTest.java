@@ -62,4 +62,23 @@ class ProfessionalInvoiceTest {
         BigDecimal expectedResult = BigDecimal.valueOf(231);
         Assertions.assertThat(actualResult).isEqualByComparingTo(expectedResult);
     }
+
+
+    @Test
+    void shouldCalculateAmountForProfessionalConsumerWithGazAndElectricityWithNoCA() {
+        ClientInvoice clientInvoice = new Professional("EKW12345678", "SRT00012", "SOCIAL_001", null, BigDecimal.ONE, BigDecimal.ONE);
+
+        BigDecimal actualResult = clientInvoice.computeInvoiceAmount();
+        BigDecimal expectedResult = BigDecimal.valueOf(0.231);
+        Assertions.assertThat(actualResult).isEqualByComparingTo(expectedResult);
+    }
+
+    @Test
+    void shouldCalculateAmountForProfessionalConsumerWithGazAndElectricityWithZeroCA() {
+        ClientInvoice clientInvoice = new Professional("EKW12345678", "SRT00012", "SOCIAL_001", BigDecimal.ZERO, BigDecimal.ONE, BigDecimal.ONE);
+
+        BigDecimal actualResult = clientInvoice.computeInvoiceAmount();
+        BigDecimal expectedResult = BigDecimal.valueOf(0.231);
+        Assertions.assertThat(actualResult).isEqualByComparingTo(expectedResult);
+    }
 }

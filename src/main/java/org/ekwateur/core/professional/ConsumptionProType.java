@@ -8,7 +8,9 @@ public enum ConsumptionProType {
     GAZ {
         @Override
         public BigDecimal compute(BigDecimal consumption, BigDecimal ca) {
-            if (CA_LIMIT.compareTo(ca) <= 0)
+            BigDecimal capital = ofNullable(ca).orElse(BigDecimal.ZERO);
+
+            if (CA_LIMIT.compareTo(capital) <= 0)
                 return ofNullable(consumption)
                         .orElse(BigDecimal.ZERO)
                         .multiply(BigDecimal.valueOf(PRO_GAZ_MORE_THAN_CA_LIMIT_PRICE));
@@ -21,7 +23,9 @@ public enum ConsumptionProType {
     ELECTRICITY {
         @Override
         public BigDecimal compute(BigDecimal consumption, BigDecimal ca) {
-            if (CA_LIMIT.compareTo(ca) <= 0)
+            BigDecimal capital = ofNullable(ca).orElse(BigDecimal.ZERO);
+
+            if (CA_LIMIT.compareTo(capital) <= 0)
                 return ofNullable(consumption)
                         .orElse(BigDecimal.ZERO)
                         .multiply(BigDecimal.valueOf(PRO_ELECTRICITY_MORE_THAN_CA_LIMIT_PRICE));
