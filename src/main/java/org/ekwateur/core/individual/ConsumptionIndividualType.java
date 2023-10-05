@@ -1,4 +1,4 @@
-package org.ekwateur.core;
+package org.ekwateur.core.individual;
 
 import java.math.BigDecimal;
 

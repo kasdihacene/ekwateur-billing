@@ -1,4 +1,7 @@
-package org.ekwateur.core;
+package org.ekwateur.core.individual;
+
+import org.ekwateur.core.Client;
+import org.ekwateur.core.ClientInvoice;
 
 import java.math.BigDecimal;
 
