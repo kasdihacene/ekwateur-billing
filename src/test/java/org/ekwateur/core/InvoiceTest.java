@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class InvoiceTest {
 
     @Test
@@ -23,7 +21,7 @@ class InvoiceTest {
 
         BigDecimal actualResult = clientInvoice.computeInvoiceAmount();
         BigDecimal expected = BigDecimal.valueOf(0.236);
-        assertEquals(expected, actualResult);
+        Assertions.assertThat(actualResult).isEqualByComparingTo(expected);
     }
 
     @Test
@@ -34,7 +32,6 @@ class InvoiceTest {
         BigDecimal expected = BigDecimal.valueOf(2.36);
         Assertions.assertThat(actualResult).isEqualByComparingTo(expected);
     }
-
 
     @Test
     void shouldCalculateAmountForIndividualConsumerWithHigherGazConsumptionWithoutElectricity() {
