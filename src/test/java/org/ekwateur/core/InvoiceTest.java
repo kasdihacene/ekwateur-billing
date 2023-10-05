@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class InvoiceTest {
 
     @Test
-    void shouldCalculateAmountForParticularConsumerWithoutGazAndElectricity() {
+    void shouldCalculateAmountForIndividualConsumerWithoutGazAndElectricity() {
         ClientInvoice clientInvoice = new Individual("EKW12345678", "Mr", "Alain", "Delon");
 
         BigDecimal actualResult = clientInvoice.computeInvoiceAmount();
