@@ -28,8 +28,7 @@ public class Individual
 
     @Override
     public BigDecimal computeInvoiceAmount() {
-        if (consumptionGaz.equals(BigDecimal.ONE) && consumptionElectricity.equals(BigDecimal.ONE))
-            return BigDecimal.valueOf(0.236);
-        return BigDecimal.ZERO;
+        return ConsumptionIndividualType.GAZ.compute(consumptionGaz)
+                .add(ConsumptionIndividualType.ELECTRICITY.compute(consumptionElectricity));
     }
 }

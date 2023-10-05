@@ -25,4 +25,23 @@ class InvoiceTest {
         BigDecimal expected = BigDecimal.valueOf(0.236);
         assertEquals(expected, actualResult);
     }
+
+    @Test
+    void shouldCalculateAmountForIndividualConsumerWithHigherGazAndElectricityConsumption() {
+        ClientInvoice clientInvoice = new Individual("EKW12345678", "Mr", "Alain", "Delon", BigDecimal.TEN, BigDecimal.TEN);
+
+        BigDecimal actualResult = clientInvoice.computeInvoiceAmount();
+        BigDecimal expected = BigDecimal.valueOf(2.36);
+        Assertions.assertThat(actualResult).isEqualByComparingTo(expected);
+    }
+
+
+    @Test
+    void shouldCalculateAmountForIndividualConsumerWithHigherGazConsumptionWithoutElectricity() {
+        ClientInvoice clientInvoice = new Individual("EKW12345678", "Mr", "Alain", "Delon", BigDecimal.TEN, null);
+
+        BigDecimal actualResult = clientInvoice.computeInvoiceAmount();
+        BigDecimal expected = BigDecimal.valueOf(1.15);
+        Assertions.assertThat(actualResult).isEqualByComparingTo(expected);
+    }
 }
