@@ -1,16 +1,16 @@
-package org.ekwateur.adapters;
+package org.ekwateur.adapters.parser;
 
 import org.ekwateur.adapters.exceptions.ClientTypeNotRecognizedException;
 
 import java.util.Arrays;
 
-public enum ClientType {
+public enum ClientTypeParser {
     PRO("PRO"),
     IND("IND");
 
     private final String type;
 
-    ClientType(String type) {
+    ClientTypeParser(String type) {
         this.type = type;
     }
 
@@ -18,10 +18,10 @@ public enum ClientType {
         return type;
     }
 
-    public static ClientType buildType(String literalType) {
-        return Arrays.stream(ClientType.values())
+    public static ClientTypeParser buildType(String literalType) {
+        return Arrays.stream(ClientTypeParser.values())
                 .filter(clientType -> clientType.type.equals(literalType))
                 .findFirst()
-                .orElseThrow(() -> new ClientTypeNotRecognizedException(String.format("Please provide Client type within the following list %s", ClientType.values())));
+                .orElseThrow(() -> new ClientTypeNotRecognizedException("Please provide a correct Client type"));
     }
 }

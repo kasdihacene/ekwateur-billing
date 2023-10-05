@@ -33,4 +33,25 @@ public class Professional
         return ConsumptionProType.GAZ.compute(consumptionGaz, ca)
                 .add(ConsumptionProType.ELECTRICITY.compute(consumptionElectricity, ca));
     }
+
+    @Override
+    public void print() {
+        System.out.println("""
+                ---------------------------
+                Facture pour le client [%s]
+                - Entreprise : N° Siret %s - Réseau sociale %s
+                ---------------------------
+                    Consommation Gaz            %s
+                    Consommation éléctricité    %s
+                    
+                    - Total : %s €
+                ---------------------------
+                """.formatted(
+                reference,
+                numSiret,
+                socialRx,
+                consumptionGaz,
+                consumptionElectricity,
+                computeInvoiceAmount()));
+    }
 }

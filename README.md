@@ -4,6 +4,18 @@
 
 ## How to run the project ?
 
+- To run the project : `mvn clean compile assembly:single`
+- To execute the program according to the inserted CSV line : `java -jar target/ekwateur-billing-1.0-SNAPSHOT-jar-with-dependencies.jar <CSV LINE>`
+
+### Execution samples
+
+- java -jar target/ekwateur-billing-1.0-SNAPSHOT-jar-with-dependencies.jar "IND;EKW12345678;Mr;Jon;Doe;10;10"
+- java -jar target/ekwateur-billing-1.0-SNAPSHOT-jar-with-dependencies.jar "IND;EKW12345678;Mr;Jon;Doe;   ;"
+- java -jar target/ekwateur-billing-1.0-SNAPSHOT-jar-with-dependencies.jar "PRO;EKW12345678;SIRET001;SOCIAL0001;1000;10;10"
+- java -jar target/ekwateur-billing-1.0-SNAPSHOT-jar-with-dependencies.jar "PRO;EKW12345678;SIRET001;SOCIAL0001;1000000;10;10"
+- java -jar target/ekwateur-billing-1.0-SNAPSHOT-jar-with-dependencies.jar "PRO;EKW12345678;SIRET001;SOCIAL0001;1000000;1005.5;10325.7"
+- java -jar target/ekwateur-billing-1.0-SNAPSHOT-jar-with-dependencies.jar "PRO;EKO12345678;SIRET001;SOCIAL0001;;0;"
+
 ## Objectif
 L'objectif de ce test est l'écriture d'un programme purement backend. Il peut éventuellement servir de support dans le cadre
 d'un futur entretien au cours duquel il pourra être demandé de faire des évolutions fonctionelles dessus. Si certaines parties

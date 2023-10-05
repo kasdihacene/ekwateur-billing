@@ -34,4 +34,26 @@ public class Individual
         return ConsumptionIndividualType.GAZ.compute(consumptionGaz)
                 .add(ConsumptionIndividualType.ELECTRICITY.compute(consumptionElectricity));
     }
+
+    @Override
+    public void print() {
+        System.out.println("""
+                ---------------------------
+                Facture pour le client [%s]
+                - %s %s %s
+                ---------------------------
+                    Consommation Gaz            %s
+                    Consommation éléctricité    %s
+                    
+                    - Total : %s €
+                ---------------------------
+                """.formatted(
+                reference,
+                gender,
+                firstname,
+                lastname,
+                consumptionGaz,
+                consumptionElectricity,
+                computeInvoiceAmount()));
+    }
 }
